@@ -1,0 +1,42 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="title_height">50dp</dimen>
+    <dimen name="main_item_height">40dp</dimen>
+    <dimen name="main_text_size">16sp</dimen>
+    <dimen name="dlna_chengjinlan">0dp</dimen>
+
+    <dimen name="text_size_f8">8sp</dimen>
+    <dimen name="text_size_f10">10sp</dimen>
+    <dimen name="text_size_f11">11sp</dimen>
+    <dimen name="text_size_f12">12sp</dimen>
+    <dimen name="text_size_f13">13sp</dimen>
+    <dimen name="text_size_f14">14sp</dimen>
+    <dimen name="text_size_f15">15sp</dimen>
+    <dimen name="text_size_f16">16sp</dimen>
+    <dimen name="text_size_f18">18sp</dimen>
+    <dimen name="text_size_f20">20sp</dimen>
+    <dimen name="text_size_f22">22sp</dimen>
+
+    <dimen name="interval_4">5dp</dimen>
+    <dimen name="interval_5">5dp</dimen>
+    <dimen name="interval_6">5dp</dimen>
+    <dimen name="interval_8">8dp</dimen>
+    <dimen name="interval_10">10dp</dimen>
+    <dimen name="interval_12">12dp</dimen>
+    <dimen name="interval_14">14dp</dimen>
+    <dimen name="interval_15">15dp</dimen>
+    <dimen name="interval_16">16dp</dimen>
+    <dimen name="interval_18">18dp</dimen>
+    <dimen name="interval_20">20dp</dimen>
+    <dimen name="interval_22">22dp</dimen>
+    <dimen name="interval_25">25dp</dimen>
+    <dimen name="interval_30">30dp</dimen>
+
+    <dimen name="title_icon_pad">10dp</dimen>
+
+    <dimen name="home_card_margin">12dp</dimen>
+    <dimen name="home_card_corner">5dp</dimen>
+    <dimen name="home_card_elevation">3dp</dimen>
+</resources>

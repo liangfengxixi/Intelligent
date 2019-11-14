@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_normal"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/home_card_margin"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/interval_20"
+                android:paddingEnd="@dimen/interval_20"
+                android:background="@drawable/white_bg">
+
+                <RelativeLayout
+                    android:id="@+id/layout_byrw"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_byrw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="保养任务"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/byrw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_byrw"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale2"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_sbbh"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_sbbh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="设备编号"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/sbbh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_sbbh"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale2"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_sb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_sb_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="设备名"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/sb_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_sb_name"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="开始时间"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_start_time"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale2"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/home_card_margin"
+                android:layout_marginEnd="@dimen/home_card_margin"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/interval_20"
+                android:paddingEnd="@dimen/interval_20"
+                android:background="@drawable/white_bg">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="保养项"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_item_bl"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_item_bl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/item_bl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_item_bl"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale2"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_marginTop="@dimen/interval_10"
+                        android:text="保养备注"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <com.xixi.intelligent.widget.EditTextCount
+                        android:id="@+id/remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_below="@+id/tv_remark"
+                        android:layout_marginTop="@dimen/interval_10"
+                        android:layout_marginBottom="@dimen/interval_20"
+                        android:gravity="start"
+                        android:padding="4dp"
+                        android:textSize="@dimen/text_size_f16"
+                        android:textColor="@color/grayscale2"
+                        android:hint="请输入备注信息"
+                        app:indexSize="14"
+                        app:indexMaxNumber="200"
+                        app:indexMarginBottom="10"
+                        app:indexMarginRight="10"
+                        app:indexColor="@color/grayscale2"
+                        android:background="@drawable/gray_border_white_bg"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_card_margin"
+                android:layout_marginStart="@dimen/home_card_margin"
+                android:layout_marginEnd="@dimen/home_card_margin"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/interval_20"
+                android:paddingEnd="@dimen/interval_20"
+                android:background="@drawable/white_bg">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="保养结果"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="实际执行人"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_user_name"
+                        android:layout_marginStart="@dimen/interval_20"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/grayscale2"
+                        android:textSize="@dimen/text_size_f16"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line3"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:id="@+id/tv_isby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="是否已保养"
+                        android:textColor="@color/grayscale1"
+                        android:textSize="@dimen/text_size_f16" />
+
+                    <RadioGroup
+                        android:id="@+id/select_type_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/tv_isby"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/interval_15"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/done"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="已保养"
+                            android:textSize="@dimen/text_size_f16"
+                            android:textColor="@color/grayscale1"
+                            android:tag="1"
+                            android:gravity="center">
+                        </RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/undone"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="未保养"
+                            android:textSize="@dimen/text_size_f16"
+                            android:textColor="@color/grayscale1"
+                            android:tag="0"
+                            android:checked="true"
+                            android:gravity="center"
+                            >
+                        </RadioButton>
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="380dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_login_btn"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

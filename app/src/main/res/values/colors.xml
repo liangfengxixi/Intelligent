@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!--bg -->
+    <color name="title_bg">#FFFFFF</color>
+    <color name="app_bg">#F0F1F1</color>
+    <color name="brown">#5760A8</color>
+
+    <color name="grayscale1">#FF333333</color>
+    <color name="grayscale2">#FF666666</color>
+    <color name="grayscale3">#FF999999</color>
+    <color name="grayscale4">#FFCCCCCC</color>
+    <color name="grayscale5">#FFD9D9D9</color>
+    <color name="grayscale6">#FFEEEEEE</color>
+    <color name="grey"> #ebebeb</color>
+    <color name="black"> #000000</color>
+    <color name="darkgrey"> #C0C0C0</color>
+    <color name="white"> #FFFFFF</color>
+    <color name="red"> #FF4A4A</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="line1">#FF7D7D7D</color>
+    <color name="line2">#FFBFBFBF</color>
+    <color name="line3">#E3E1E4</color>
+    <color name="line4">#E5E5E5</color>
+    <color name="line5">#88BFBFBF</color>
+
+    <color name="toolbar_title">#666666</color>
+    <color name="pie_1">#00BCD4</color>
+    <color name="linechart_1">#05DEFA</color>
+
+
+</resources>

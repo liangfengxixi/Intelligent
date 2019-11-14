@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        xi_keystore {
+            keyAlias 'xixi'
+            keyPassword '123456'
+            storeFile file('../myapp.keystore')
+            storePassword '123456'
+        }
+    }
+
+    compileSdkVersion 28
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.xixi.intelligent"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 3
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+//            generateStubs = true
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true //混淆
+            zipAlignEnabled true//内存对齐
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.xi_keystore //签名
+        }
+        debug {
+            minifyEnabled false //不混淆
+            signingConfig signingConfigs.xi_keystore
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 自定义APK安装包名
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile.name.contains("debug")) {
+                    outputFileName = "核悦智能_${variant.versionCode}_${variant.versionName}_${buildTime()}.apk"
+//                    }
+//                    if (outputFile.name.contains("release")) {
+//                        outputFileName = "顺道_release_${variant.productFlavors[0].name}_${variant.versionCode}_${variant.versionName}_${buildTime()}.apk"
+//                    }
+            }
+    }
+}
+
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //ARouter
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    //Fragmentation
+    implementation 'me.yokeyword:fragmentationx:1.0.1'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //rxandroid 、rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+    //retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //okhttp
+    implementation "com.squareup.okhttp3:okhttp:3.14.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.0'
+    //FlycoTabLayout
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //rxpermission
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.1.0'
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.1.0'
+    //RabbitMQ消息
+    implementation 'com.rabbitmq:amqp-client:4.11.3'
+
+    implementation 'com.xw.repo:xedittext-androidx:2.2.6@aar'
+    //StatusBar
+    implementation('com.github.niorgai:StatusBarCompat:2.3.3', {
+        exclude group: 'androidx.appcompat:appcompat'
+        exclude group: 'com.google.android.material:material'
+    })
+    //垂直TabLayout
+    implementation 'q.rorbin:VerticalTabLayout:1.2.9'
+    implementation 'q.rorbin:badgeview:1.1.3'
+    //MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}

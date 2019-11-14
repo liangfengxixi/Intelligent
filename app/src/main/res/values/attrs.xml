@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="EditTextCount">
+        <attr name="indexColor" format="color"/>
+        <attr name="indexSize" format="integer"/>
+        <attr name="indexMaxNumber" format="integer"/>
+        <attr name="indexMarginBottom" format="integer"/>
+        <attr name="indexMarginRight" format="integer"/>
+        <attr name="defaultHeight" format="integer"/>
+        <attr name="textType">
+            <enum name="defalut" value="0"/>
+            <enum name="defalut_bold" value="1"/>
+            <enum name="monospace" value="2"/>
+            <enum name="sans_serif" value="3"/>
+            <enum name="serif" value="4"/>
+        </attr>
+    </declare-styleable>
+</resources>

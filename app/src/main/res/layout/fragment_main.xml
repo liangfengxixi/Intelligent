@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/home_left"
+        android:layout_width="110dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_20"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.xixi.intelligent.widget.circleImageView.CircleImageView
+                android:id="@+id/img_account"
+                android:layout_width="53dp"
+                android:layout_height="53dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_user" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="XX"
+                android:textSize="@dimen/text_size_f16"
+                android:textColor="@color/grayscale2"/>
+
+        </LinearLayout>
+
+        <q.rorbin.verticaltablayout.VerticalTabLayout
+            android:id="@+id/tablayout"
+            android:layout_below="@+id/ll_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_20"
+            app:indicator_color="@color/brown"
+            app:indicator_gravity="fill"
+            app:tab_height="75dp"
+            app:tab_mode="scrollable"
+            app:tab_margin="@dimen/interval_10"/>
+
+        <LinearLayout
+            android:id="@+id/ll_loginout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/interval_20"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_loginout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_loginout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="退出"
+                android:textSize="@dimen/text_size_f16"
+                android:textColor="@color/grayscale2"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--<androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp"
+        android:layout_toRightOf="@+id/home_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/home_left"
+        android:background="@color/app_bg"
+        />
+
+</RelativeLayout>
