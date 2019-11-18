@@ -77,9 +77,7 @@ public abstract class BaseSupportFragment extends SupportFragment implements Lif
             pageBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    L.e("!!!!!!!!01");
                     if(null != _mActivity && null != getFragmentManager()&& getFragmentManager().getBackStackEntryCount() > 1){
-                        L.e("!!!!!!!!02");
                         pop();
                     /*}else {
                         if (null != _mActivity && null != _mActivity.getSupportFragmentManager() && _mActivity.getSupportFragmentManager().getBackStackEntryCount() > 1) {

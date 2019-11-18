@@ -26,6 +26,14 @@ interface KotlinService {
     @POST("app/rest/v2/services/mes_MaintenanceService/setEquMaintenanceLogInApp")
     fun submitBYTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
 
+    //维修任务
+    @GET("app/rest/v2/services/mes_MaintenanceService/getEquMaintenanceTasksToApp")
+    fun getWXTask(@Query("currentPage") page: Int,@Query("pageSize") size: Int): Observable<BaseListBean<TaskWXBean>>
+
+    //提交维修任务表单
+    @POST("app/rest/v2/services/mes_MaintenanceService/setEquMaintenanceLogInApp")
+    fun submitWXTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
+
     //点检任务
     @GET("app/rest/v2/services/mes_CheckService/getEquCheckTasksToApp")
     fun getDJTask(@Query("currentPage") page: Int,@Query("pageSize") size: Int): Observable<BaseListBean<TaskDJBean>>

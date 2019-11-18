@@ -245,7 +245,7 @@ class TaskFragment : BaseSupportFragment() {
             R.id.cv_equip_list -> ""
             R.id.cv_equip_fix -> ""
             R.id.cv_task_by -> start(TaskBYFragment.newInstance())
-            R.id.cv_task_ws -> ""
+            R.id.cv_task_ws -> start(TaskWXFragment.newInstance())
             R.id.cv_task_dj -> start(TaskDJFragment.newInstance())
         }
     }

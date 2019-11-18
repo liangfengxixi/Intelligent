@@ -42,10 +42,15 @@ class TaskDJFragment : BaseSupportFragment() {
         }
     }
 
-    override fun onLazyInitView(savedInstanceState: Bundle?) {
-        super.onLazyInitView(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         page_title.text = "点检任务"
         initRecyclerView()
+    }
+
+    //转场动画结束后加载数据，防止动画卡顿
+    override fun onEnterAnimationEnd(savedInstanceState: Bundle?) {
+        super.onEnterAnimationEnd(savedInstanceState)
         getDJTask(true)
     }
 
@@ -53,7 +58,7 @@ class TaskDJFragment : BaseSupportFragment() {
         mAdapter = TaskDJAdapter(R.layout.item_task_dj, mDataList)
         mAdapter.openLoadAnimation()
         mRecyclerView.layoutManager = LinearLayoutManager(context)
-        mAdapter.emptyView = View.inflate(context, R.layout.layout_emptry, null)
+
         mRecyclerView.adapter = mAdapter
         mAdapter.setLoadMoreView(CustomLoadMoreView())
         mSwipeRefresh.setColorSchemeColors(context!!.resources.getColor(R.color.red))
@@ -96,6 +101,7 @@ class TaskDJFragment : BaseSupportFragment() {
             }
             .doFinally {
                 mSwipeRefresh.isRefreshing = false
+                mAdapter.emptyView = View.inflate(context, R.layout.layout_emptry, null)
             }
             .bindToLifecycle(this)
             .subscribe(object : ApiObserver<BaseListBean<TaskDJBean>>() {

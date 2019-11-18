@@ -12,6 +12,7 @@ import com.xixi.intelligent.base.BaseSupportActivity
 import com.xixi.intelligent.bean.event.MyMessageEvent
 import com.xixi.intelligent.common.ARConstant
 import com.xixi.intelligent.common.MData
+import com.xixi.intelligent.ui.animator.MyHorizontalAnimator
 import com.xixi.intelligent.ui.fragment.MainFragment
 import com.xixi.intelligent.utils.L
 import com.xixi.intelligent.utils.SPUtils
@@ -52,7 +53,7 @@ class MainActivity : BaseSupportActivity() {
 
     override fun onCreateFragmentAnimator(): FragmentAnimator {
         // 设置横向(和安卓4.x动画相同)
-        return DefaultHorizontalAnimator()
+        return MyHorizontalAnimator()
     }
 
     /**
