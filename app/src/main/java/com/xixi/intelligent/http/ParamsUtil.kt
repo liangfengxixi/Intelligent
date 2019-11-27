@@ -99,4 +99,27 @@ class ParamsUtil {
         return RequestBody.create(mediaType, params)
     }
 
+    /**
+     * 维修任务
+     *
+     * @return
+     */
+    fun TaskWXBody(id: String?, startTime: String?, remark: String?, result: String): RequestBody {
+        val jsonObject = JSONObject()
+        try {
+            jsonObject.put("id", id)
+            jsonObject.put("startTime", startTime)
+            jsonObject.put("remark", remark)
+            jsonObject.put("result", result)
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        val params = jsonObject.toString()
+        L.i("params = $params")
+
+        return RequestBody.create(mediaType, params)
+    }
+
 }

@@ -27,11 +27,11 @@ interface KotlinService {
     fun submitBYTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
 
     //维修任务
-    @GET("app/rest/v2/services/mes_MaintenanceService/getEquMaintenanceTasksToApp")
+    @GET("app/rest/v2/services/mes_FaultService/getEquFaultTasksToApp")
     fun getWXTask(@Query("currentPage") page: Int,@Query("pageSize") size: Int): Observable<BaseListBean<TaskWXBean>>
 
     //提交维修任务表单
-    @POST("app/rest/v2/services/mes_MaintenanceService/setEquMaintenanceLogInApp")
+    @POST("app/rest/v2/services/mes_FaultService/setEquFaultLogInApp")
     fun submitWXTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
 
     //点检任务

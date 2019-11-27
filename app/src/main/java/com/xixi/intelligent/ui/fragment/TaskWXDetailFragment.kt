@@ -48,12 +48,12 @@ class TaskWXDetailFragment : BaseSupportFragment() {
     fun initData(){
         taskBean = arguments!!.getSerializable("taskBean") as TaskWXBean
         if(taskBean!=null){
-            byrw.text = taskBean?.equEquipmentMaintenance?.equipmentMaintenanceName?:""
+            byrw.text = taskBean?.equEquipmentFault?.faultName?:""
             sbbh.text = taskBean?.equipment?.equipmentNum?:""
             sb_name.text = taskBean?.equipment?.equipmentName?:""
             start_time.text = TimeUtils.getNowString()
-            tv_item_bl.text = taskBean?.equMaintenanceItem?.maintenanceItemName?:""
-            item_bl.text = taskBean?.equMaintenanceItem?.remark?:""
+//            tv_item_bl.text = taskBean?.equFaultItem?.faultItemName?:""
+            item_bl.text = taskBean?.equFaultItem?.faultItemName?:""
             user_name.text = SPUtils.getInstance().getString("userName","")
 
         }
@@ -81,7 +81,7 @@ class TaskWXDetailFragment : BaseSupportFragment() {
 
     fun submitBYTask(){
 
-        val params = ParamsUtil.init().TaskBYBody(taskBean?.id,start_time.text.toString(),remark.text.toString().trim(),result)
+        val params = ParamsUtil.init().TaskWXBody(taskBean?.id,start_time.text.toString(),remark.text.toString().trim(),result)
 
         ApiClient.instance.kotlinService.submitWXTask(params)
             .compose(NetworkScheduler.compose())

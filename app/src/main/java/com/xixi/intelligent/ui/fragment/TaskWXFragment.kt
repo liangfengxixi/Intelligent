@@ -56,7 +56,7 @@ class TaskWXFragment : BaseSupportFragment() {
     }
 
     private fun initRecyclerView() {
-        mAdapter = TaskWXAdapter(R.layout.item_task_by, mDataList)
+        mAdapter = TaskWXAdapter(R.layout.item_task_wx, mDataList)
         mAdapter.openLoadAnimation()
         mRecyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -79,7 +79,7 @@ class TaskWXFragment : BaseSupportFragment() {
                 R.id.btn_by -> {
                     val bundle = Bundle()
                     bundle.putSerializable("taskBean", taskBean)
-                    startForResult(TaskBYDetailFragment.newInstance(bundle),RequestCode)
+                    startForResult(TaskWXDetailFragment.newInstance(bundle),RequestCode)
                 }
             }
         }

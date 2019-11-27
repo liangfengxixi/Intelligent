@@ -8,13 +8,27 @@ import java.io.Serializable
 
 data class TaskWXBean(
     val _entityName: String,
-    val equEquipmentMaintenance: EquEquipmentMaintenance,
-    val equMaintenanceItem: EquMaintenanceItem,
+    val equEquipmentFault: EquEquipmentFault,
+    val equFaultItem: EquFaultItem,
     val equipment: Equipment,
+    val faultUU: String,
     val id: String,
-    val startTime: String,
     val status: String,
     val taskName: String,
-    val timeLong: Int,
+    val version: Int
+):Serializable
+
+data class EquEquipmentFault(
+    val _entityName: String,
+    val faultDate: String,
+    val faultName: String,
+    val id: String,
+    val version: Int
+):Serializable
+
+data class EquFaultItem(
+    val _entityName: String,
+    val faultItemName: String,
+    val id: String,
     val version: Int
 ):Serializable

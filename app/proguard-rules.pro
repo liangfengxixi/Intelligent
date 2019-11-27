@@ -84,6 +84,7 @@
 ## bean
 -keep class com.xixi.intelligent.bean.**{*;}
 -keep class com.xixi.intelligent.base.**{*;}
+-keep class com.xixi.intelligent.common.**{*;}
 
 #---------------------------------webview------------------------------------
 -keepclassmembers class fqcn.of.javascript.interface.for.webview {

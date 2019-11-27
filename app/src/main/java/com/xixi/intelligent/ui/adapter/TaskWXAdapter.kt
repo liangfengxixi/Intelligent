@@ -13,20 +13,20 @@ class TaskWXAdapter(layoutResId: Int, data: List<TaskWXBean>) : BaseQuickAdapter
 
     override fun convert(helper: BaseViewHolder?, item: TaskWXBean?) {
         if (item != null) {
-            helper?.setText(R.id.tv_mName, item.equEquipmentMaintenance.equipmentMaintenanceName?:"")
+            helper?.setText(R.id.tv_mName, item.equEquipmentFault.faultName?:"")
             helper?.setText(R.id.tv_eName, "设备名：${item.equipment.equipmentName?:""}")
-            helper?.setText(R.id.tv_time, "计划时间：${item.startTime}")
-            helper?.setText(R.id.tv_bl_item, item.equMaintenanceItem.maintenanceItemName)
+            helper?.setText(R.id.tv_time, "报修时间：${item.equEquipmentFault.faultDate}")
+            helper?.setText(R.id.tv_bl_item, item.equFaultItem.faultItemName?:"")
             when(item.status){
-                "UNMAINTENANCE"->{
+                "UNFAULT"->{
                     helper?.setText(R.id.tv_status, "未完成")
                     helper?.setVisible(R.id.btn_by, true)
                 }
-                "MAINTENANCED"->{
+                "FAULTED"->{
                     helper?.setText(R.id.tv_status, "已完成")
                     helper?.setVisible(R.id.btn_by, false)
                 }
-                "MAINTENANCING"->{
+                "FAUITING"->{
                     helper?.setText(R.id.tv_status, "执行中")
                     helper?.setVisible(R.id.btn_by, false)
                 }
