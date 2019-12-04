@@ -1,8 +1,10 @@
 package com.xixi.intelligent.ui.fragment
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import com.xixi.intelligent.R
 import com.xixi.intelligent.base.BaseSupportFragment
+import com.xixi.intelligent.utils.L
 
 
 /**
@@ -32,6 +34,13 @@ class PanelRootFragment : BaseSupportFragment() {
             return true
         }
         return super.onBackPressedSupport()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        L.e("root - $hidden")
+        _mActivity.requestedOrientation =
+            if (hidden) ActivityInfo.SCREEN_ORIENTATION_SENSOR else ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
     }
 
 }

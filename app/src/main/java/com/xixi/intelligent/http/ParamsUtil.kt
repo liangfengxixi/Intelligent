@@ -122,4 +122,27 @@ class ParamsUtil {
         return RequestBody.create(mediaType, params)
     }
 
+    /**
+     * 设备报修
+     *
+     * @return
+     */
+    fun TaskSBBXBody(faultName: String?, equipmentId: String?, faultId: String?, remark: String): RequestBody {
+        val jsonObject = JSONObject()
+        try {
+            jsonObject.put("faultName", faultName)
+            jsonObject.put("equipmentId", equipmentId)
+            jsonObject.put("faultId", faultId)
+            jsonObject.put("remark", remark)
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        val params = jsonObject.toString()
+        L.i("params = $params")
+
+        return RequestBody.create(mediaType, params)
+    }
+
 }

@@ -39,4 +39,6 @@
     <dimen name="home_card_margin">12dp</dimen>
     <dimen name="home_card_corner">5dp</dimen>
     <dimen name="home_card_elevation">3dp</dimen>
+
+    <dimen name="sblb_detail_item">34dp</dimen>
 </resources>

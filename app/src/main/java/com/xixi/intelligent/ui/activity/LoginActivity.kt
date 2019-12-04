@@ -48,6 +48,10 @@ class LoginActivity: BaseSupportActivity() {
             edt_psw.setText(oldPwd)
             edt_psw.setSelection(oldPwd.length)
         }
+        var tokenError = intent.getIntExtra("toast",-1)
+        if(tokenError ==1){
+            toast("Token失效，请重新登录")
+        }
     }
 
     @OnClick(R.id.btn_login)

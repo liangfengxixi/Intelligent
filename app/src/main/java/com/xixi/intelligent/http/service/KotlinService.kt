@@ -50,5 +50,15 @@ interface KotlinService {
     @GET("app/rest/v2/services/mes_TaskService/updateMessageStatus")
     fun changeMsgRead(@Query("uuid") id: String?): Observable<BaseBean<Any?>>
 
+    //设备报修获取设备名
+    @GET("app/rest/v2/services/mes_EquipmentService/getEquipmentByNumApp")
+    fun getEquipName(@Query("equipmentNum") id: String?): Observable<BaseBean<SBBXNameBean>>
 
+    //设备报修获取所有不良项
+    @GET("app/rest/v2/services/mes_EquipmentService/getAllFaultItem")
+    fun getAllFaultItem(): Observable<BaseListBean<FaultItemBean>>
+
+    //提交点检任务表单
+    @POST("app/rest/v2/services/mes_EquipmentService/setEquipmentFaultInApp")
+    fun submitSBBXTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
 }

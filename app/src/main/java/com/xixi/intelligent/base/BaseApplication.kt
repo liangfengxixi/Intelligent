@@ -1,6 +1,7 @@
 package com.xixi.intelligent.base
 
 import android.app.Application
+import android.content.Context
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.xixi.intelligent.BuildConfig
@@ -9,8 +10,16 @@ import me.yokeyword.fragmentation.Fragmentation
 
 class BaseApplication : Application() {
 
+
+//    var mContext: Context? = null
+    companion object{
+    lateinit var app: BaseApplication
+    lateinit var mContext: Context
+}
     override fun onCreate() {
         super.onCreate()
+        app = this
+        mContext = this
         MultiDex.install(this);
         Utils.init(this)
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效

@@ -1,16 +1,24 @@
 package ocom.xixi.intelligent.http
 
 import android.text.TextUtils
+import com.alibaba.android.arouter.launcher.ARouter
 import com.xixi.intelligent.BuildConfig
+import com.xixi.intelligent.base.BaseApplication
 import com.xixi.intelligent.base.Uris
+import com.xixi.intelligent.common.ARConstant
 import com.xixi.intelligent.http.KotlinService
+import com.xixi.intelligent.ui.activity.LoginActivity
+import com.xixi.intelligent.utils.ActivityUtils
 import com.xixi.intelligent.utils.L
 import com.xixi.intelligent.utils.SPUtils
+import com.xixi.intelligent.utils.ToastUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -77,6 +85,20 @@ class ApiClient private constructor() {
             if (response?.body() != null && response!!.body()?.contentType() != null) {
                 val mediaType = response!!.body()?.contentType()
                 val message = response!!.body()?.string()
+                try {
+                    val jsonObject = JSONObject(message)
+                    val error = jsonObject.optString("error")
+                    if (error == "invalid_token") {
+                        ActivityUtils.finishAllActivities()
+//                        ActivityUtils.startActivity(LoginActivity::class.java)
+                        SPUtils.getInstance().remove("access_token")
+                        ARouter.getInstance().build(ARConstant.AR_LoginAct).withInt("toast",1).navigation()
+                    }
+                    val responseBody = ResponseBody.create(mediaType, message);
+                    return response.newBuilder().body(responseBody).code(200).build();
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
                 val responseBody = ResponseBody.create(mediaType, message);
                 return response.newBuilder().body(responseBody).build();
             } else {

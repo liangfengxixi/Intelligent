@@ -242,8 +242,8 @@ class TaskFragment : BaseSupportFragment() {
     fun itemClick(view : View){
         when (view.id) {
             R.id.cv_task_zj -> ""
-            R.id.cv_equip_list -> ""
-            R.id.cv_equip_fix -> ""
+            R.id.cv_equip_list -> start(TaskSBLBFragment.newInstance())
+            R.id.cv_equip_fix -> start(TaskSBBXFragment.newInstance())
             R.id.cv_task_by -> start(TaskBYFragment.newInstance())
             R.id.cv_task_ws -> start(TaskWXFragment.newInstance())
             R.id.cv_task_dj -> start(TaskDJFragment.newInstance())
