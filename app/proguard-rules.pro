@@ -22,14 +22,18 @@
 #####################################################################################
 # start on
 #####################################################################################
--optimizationpasses 5          # 指定代码的压缩级别
--dontusemixedcaseclassnames   # 是否使用大小写混合
--dontskipnonpubliclibraryclasses
-#-dontoptimize  #优化  不优化输入的类文件
--dontpreverify           # 混淆时是否做预校验
--verbose                # 混淆时是否记录日志
 
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*  # 混淆时所采用的算法
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontskipnonpubliclibraryclassmembers
+-dontpreverify
+-verbose
+-printmapping proguardMapping.txt
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
+-keepattributes *Annotation*,InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
 
 -keep public class * extends android.app.Activity      # 保持哪些类不被混淆
 -keep public class * extends android.app.Application   # 保持哪些类不被混淆
@@ -38,8 +42,9 @@
 -keep public class * extends android.content.ContentProvider    # 保持哪些类不被混淆
 -keep public class * extends android.app.backup.BackupAgentHelper # 保持哪些类不被混淆
 -keep public class * extends android.preference.Preference        # 保持哪些类不被混淆
--keep public class * extends android.support.v4.**
+-keep public class * extends android.view.View
 -keep public class com.android.vending.licensing.ILicensingService
+-keep class android.support.** {*;}
 -keepclasseswithmembernames class * {  # 保持 native 方法不被混淆
     native <methods>;
 }
@@ -73,12 +78,17 @@
     java.lang.Object readResolve();
 }
 
+-keep class **.R$* {
+ *;
+}
+-keepclassmembers class * {
+    void *(**On*Event);
+}
+
 #过滤注解
 -keepattributes *Annotation*
 -keep class * extends java.lang.annotation.Annotation { *; }
 -keep interface * extends java.lang.annotation.Annotation { *; }
-#过滤泛型
--keepattributes Signature
 
 ## bean
 -keep class com.xixi.intelligent.bean.**{*;}
@@ -99,9 +109,12 @@
 }
 -keepattributes *JavascriptInterface*
 #webview js 回调
-#-keepclassmembers class com.xixi.intelligent.ui.fragment.Panel1Fragment$JavaScriptInterface {
-#  public *;
-#}
+-keepclassmembers class com.xixi.intelligent.ui.fragment.Panel1Fragment$JavaScriptInterface {
+  public *;
+}
+-keepclassmembers class com.xixi.intelligent.ui.fragment.Panel2Fragment$JavaScriptInterface {
+  public *;
+}
 ## retrofit2
 # Retain service method parameters when optimizing.
 -keepclassmembers,allowshrinking,allowobfuscation interface * {

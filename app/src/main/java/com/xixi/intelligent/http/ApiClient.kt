@@ -93,9 +93,9 @@ class ApiClient private constructor() {
 //                        ActivityUtils.startActivity(LoginActivity::class.java)
                         SPUtils.getInstance().remove("access_token")
                         ARouter.getInstance().build(ARConstant.AR_LoginAct).withInt("toast",1).navigation()
+                        val responseBody = ResponseBody.create(mediaType, message);
+                        return response.newBuilder().body(responseBody).code(200).build();
                     }
-                    val responseBody = ResponseBody.create(mediaType, message);
-                    return response.newBuilder().body(responseBody).code(200).build();
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
