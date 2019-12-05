@@ -58,7 +58,12 @@ interface KotlinService {
     @GET("app/rest/v2/services/mes_EquipmentService/getAllFaultItem")
     fun getAllFaultItem(): Observable<BaseListBean<FaultItemBean>>
 
-    //提交点检任务表单
+    //提交报修任务表单
     @POST("app/rest/v2/services/mes_EquipmentService/setEquipmentFaultInApp")
     fun submitSBBXTask(@Body requestBody:RequestBody): Observable<BaseBean<Any?>>
+
+    //设备列表
+    @GET("app/rest/v2/services/mes_EquipmentService/getAllEquipmentToApp")
+    fun getEquipList(@Query("currentPage") page: Int,@Query("pageSize") size: Int): Observable<BaseListBean<EquipBean>>
+
 }

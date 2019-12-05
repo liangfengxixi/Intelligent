@@ -50,7 +50,7 @@
                         android:layout_marginEnd="50dp"
                         android:gravity="center_vertical"
                         android:hint="请输入报修名"
-                        android:text="WTKT1-500-343-001"
+                        android:singleLine="true"
                         android:textColor="@color/grayscale2"
                         android:textSize="@dimen/text_size_f16"
                         android:background="@null"/>

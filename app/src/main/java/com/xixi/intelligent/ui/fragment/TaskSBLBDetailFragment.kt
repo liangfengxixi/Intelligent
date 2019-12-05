@@ -1,16 +1,12 @@
 package com.xixi.intelligent.ui.fragment
 
 import android.os.Bundle
-import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindToLifecycle
+import androidx.core.content.ContextCompat
 import com.xixi.intelligent.R
 import com.xixi.intelligent.base.BaseSupportFragment
-import com.xixi.intelligent.bean.BaseBean
-import com.xixi.intelligent.bean.TaskDJBean
-import com.xixi.intelligent.http.NetworkScheduler
-import com.xixi.intelligent.http.ParamsUtil
-import com.xixi.intelligent.http.subscriber.ApiObserver
+import com.xixi.intelligent.bean.EquipBean
+import kotlinx.android.synthetic.main.fragment_task_sblb_detail.*
 import kotlinx.android.synthetic.main.title_normal.*
-import ocom.xixi.intelligent.http.ApiClient
 
 
 /**
@@ -18,8 +14,7 @@ import ocom.xixi.intelligent.http.ApiClient
  */
 class TaskSBLBDetailFragment : BaseSupportFragment() {
 
-    var taskBean: TaskDJBean? = null
-    var result = ""
+    var taskBean: EquipBean? = null
 
     override fun getContentRes(): Int {
         return R.layout.fragment_task_sblb_detail
@@ -40,9 +35,34 @@ class TaskSBLBDetailFragment : BaseSupportFragment() {
     }
 
     fun initData(){
-        taskBean = arguments!!.getSerializable("taskBean") as TaskDJBean
+        taskBean = arguments!!.getSerializable("taskBean") as EquipBean
         if(taskBean!=null){
+            tv_name.text = taskBean?.equipmentType?.equipmentTypeName?:""
+            tv_1.text = taskBean?.equipmentName?:""
+            tv_2.text = taskBean?.equipmentNum?:""
+            tv_3.text = taskBean?.workshop?.name?:""
+            tv_4.text = taskBean?.model?:""
+            tv_5.text = taskBean?.firstUsedTime?:""
 
+            tv_11.text = taskBean?.equipmentType?.equipmentTypeName?:""
+            setStatus(taskBean?.status)
+            tv_13.text = taskBean?.manufacturer?.suppllierName?:""
+            tv_14.text = taskBean?.dataOfEntry?:""
+
+            tv_remark.text = taskBean?.remark?:""
+        }
+    }
+
+    fun setStatus(status:String?){
+        when(status){
+            "USEING"->{
+                tv_12.text = "启用中"
+                tv_12.setTextColor(ContextCompat.getColor(_mActivity,R.color.brown))
+            }
+            "UNUSED"->{
+                tv_12.text = "停用中"
+                tv_12.setTextColor(ContextCompat.getColor(_mActivity,R.color.equipment_status_unused))
+            }
         }
     }
 

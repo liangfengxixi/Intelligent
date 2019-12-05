@@ -81,10 +81,19 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备状态："
+                    android:textColor="@color/grayscale2"
+                    android:textSize="@dimen/text_size_f16" />
+
+                <TextView
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="xxx"
+                    android:layout_toEndOf="@id/tv_1"
+                    android:text=""
                     android:textColor="@color/grayscale2"
                     android:textSize="@dimen/text_size_f16" />
 

@@ -8,10 +8,10 @@ import com.trello.rxlifecycle3.android.lifecycle.kotlin.bindToLifecycle
 import com.xixi.intelligent.R
 import com.xixi.intelligent.base.BaseSupportFragment
 import com.xixi.intelligent.bean.BaseListBean
-import com.xixi.intelligent.bean.TaskBYBean
+import com.xixi.intelligent.bean.EquipBean
 import com.xixi.intelligent.http.NetworkScheduler
 import com.xixi.intelligent.http.subscriber.ApiObserver
-import com.xixi.intelligent.ui.adapter.TaskSBLBAdapter
+import com.xixi.intelligent.ui.adapter.EquipAdapter
 import com.xixi.intelligent.widget.CustomLoadMoreView
 import kotlinx.android.synthetic.main.fragment_task_sblb.*
 import kotlinx.android.synthetic.main.title_normal.*
@@ -23,14 +23,11 @@ import ocom.xixi.intelligent.http.ApiClient
  */
 class TaskSBLBFragment : BaseSupportFragment() {
 
-    lateinit var mAdapter: TaskSBLBAdapter
+    lateinit var mAdapter: EquipAdapter
 
-    var mDataList: List<TaskBYBean> = arrayListOf()
+    var mDataList: List<EquipBean> = arrayListOf()
     val pageSize = 10
     var pageNo = 1
-
-    val RequestCode = 100
-    val ResultCode = 101
 
     override fun getContentRes(): Int {
         return R.layout.fragment_task_sblb
@@ -55,7 +52,7 @@ class TaskSBLBFragment : BaseSupportFragment() {
     }
 
     private fun initRecyclerView() {
-        mAdapter = TaskSBLBAdapter(R.layout.item_task_sblb, mDataList)
+        mAdapter = EquipAdapter(R.layout.item_task_sblb, mDataList)
         mAdapter.openLoadAnimation()
         mRecyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -69,10 +66,10 @@ class TaskSBLBFragment : BaseSupportFragment() {
             getBYTask(false)
         }, mRecyclerView)
         mAdapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
-            val taskBean = adapter.getItem(position) as TaskBYBean
+            val taskBean = adapter.getItem(position) as EquipBean
             val bundle = Bundle()
             bundle.putSerializable("taskBean", taskBean)
-            startForResult(TaskBYDetailFragment.newInstance(bundle),RequestCode)
+            start(TaskSBLBDetailFragment.newInstance(bundle))
         }
 
     }
@@ -85,7 +82,7 @@ class TaskSBLBFragment : BaseSupportFragment() {
             pageNo++
         }
 
-        ApiClient.instance.kotlinService.getBYTask(pageNo,pageSize)
+        ApiClient.instance.kotlinService.getEquipList(pageNo,pageSize)
             .compose(NetworkScheduler.compose())
             .doOnSubscribe {
                 if(refresh)
@@ -96,8 +93,8 @@ class TaskSBLBFragment : BaseSupportFragment() {
                 mAdapter.emptyView = View.inflate(context, R.layout.layout_emptry, null)
             }
             .bindToLifecycle(this)
-            .subscribe(object : ApiObserver<BaseListBean<TaskBYBean>>() {
-                override fun onSuccess(t: BaseListBean<TaskBYBean>) {
+            .subscribe(object : ApiObserver<BaseListBean<EquipBean>>() {
+                override fun onSuccess(t: BaseListBean<EquipBean>) {
                     if (t.isSuccess()) {
                         if(refresh){
                             mAdapter.setNewData(t.data)
@@ -116,12 +113,5 @@ class TaskSBLBFragment : BaseSupportFragment() {
                     toast(msg)
                 }
             })
-    }
-
-    override fun onFragmentResult(requestCode: Int, resultCode: Int, data: Bundle?) {
-        super.onFragmentResult(requestCode, resultCode, data)
-        if(requestCode == RequestCode && resultCode ==ResultCode){
-            getBYTask(true)
-        }
     }
 }

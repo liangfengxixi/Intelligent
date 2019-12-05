@@ -28,8 +28,7 @@
 #-dontoptimize  #优化  不优化输入的类文件
 -dontpreverify           # 混淆时是否做预校验
 -verbose                # 混淆时是否记录日志
-#忽略警告
--ignorewarning
+
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*  # 混淆时所采用的算法
 
 -keep public class * extends android.app.Activity      # 保持哪些类不被混淆
@@ -85,6 +84,7 @@
 -keep class com.xixi.intelligent.bean.**{*;}
 -keep class com.xixi.intelligent.base.**{*;}
 -keep class com.xixi.intelligent.common.**{*;}
+-keep class com.xixi.intelligent.widget.**{*;}
 
 #---------------------------------webview------------------------------------
 -keepclassmembers class fqcn.of.javascript.interface.for.webview {
@@ -97,8 +97,11 @@
 -keepclassmembers class * extends android.webkit.webViewClient {
     public void *(android.webkit.webView, jav.lang.String);
 }
+-keepattributes *JavascriptInterface*
 #webview js 回调
-
+#-keepclassmembers class com.xixi.intelligent.ui.fragment.Panel1Fragment$JavaScriptInterface {
+#  public *;
+#}
 ## retrofit2
 # Retain service method parameters when optimizing.
 -keepclassmembers,allowshrinking,allowobfuscation interface * {

@@ -2,6 +2,7 @@ package com.xixi.intelligent.ui.fragment
 
 import android.os.Bundle
 import android.text.SpannableString
+import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -125,7 +126,7 @@ class TaskSBBXFragment : BaseSupportFragment() {
     }
 
     //获取所有不良项
-    fun getAllFaultItem(){
+    private fun getAllFaultItem(){
 
         ApiClient.instance.kotlinService.getAllFaultItem()
             .compose(NetworkScheduler.compose())
@@ -135,6 +136,7 @@ class TaskSBBXFragment : BaseSupportFragment() {
                     if(t.isSuccess()){
                         if(!t.data.isNullOrEmpty()){
                             mFaultList.addAll(t.data)
+                            mFaultItemBean = mFaultList.get(0)
                             initSpinner()
                         }
                     }else{
@@ -148,9 +150,13 @@ class TaskSBBXFragment : BaseSupportFragment() {
             })
     }
 
-    //获取所有不良项
-    fun submitTask(){
+    //提交报修
+    private fun submitTask(){
 
+        if(TextUtils.isEmpty(bxm.text.toString())){
+            toast("设备编号不能为空")
+            return
+        }
         val params = ParamsUtil.init().TaskSBBXBody(bxm.text.toString().trim(),mSBBXNameBean?.id,mFaultItemBean?.id,
             remark.text.toString())
 
